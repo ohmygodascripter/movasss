@@ -1,0 +1,54 @@
+/* Movas Inspire GamepadViewer PS4 skin
+   Upload this folder to GitHub Pages, then use:
+   https://gamepadviewer.com/?p=1&s=5&editcss=YOUR_EDIT_CSS_URL
+*/
+
+/* Uses the red galaxy PS4 overlay as the base, then recolors it to teal/white */
+@import url('https://irlwill.github.io/red-galaxy-ps4_overlay/edit.css');
+
+html, body {
+  background: transparent !important;
+  overflow: hidden !important;
+}
+
+/* Turn the red galaxy controller into Movas teal/white */
+.controller,
+.controller.ds4,
+.controller.custom,
+#controller {
+  filter: hue-rotate(145deg) saturate(1.8) brightness(1.15) contrast(1.08) drop-shadow(0 0 18px #19ffd0) !important;
+}
+
+/* Extra neon glow */
+.controller:before,
+.controller.ds4:before {
+  filter: drop-shadow(0 0 22px #19ffd0) drop-shadow(0 0 40px #19ffd0) !important;
+}
+
+/* Optional Movas logo badge. Remove this block if you only want the controller recolor. */
+body:after {
+  content: "";
+  position: fixed;
+  right: 24px;
+  bottom: 18px;
+  width: 260px;
+  height: 260px;
+  background: url('./movas.png') center / contain no-repeat;
+  opacity: 0.38;
+  filter: drop-shadow(0 0 18px #19ffd0);
+  pointer-events: none;
+  z-index: 999999;
+}
+
+/* Teal pulse animation for the overlay */
+@keyframes movasGlow {
+  0%, 100% { filter: hue-rotate(145deg) saturate(1.7) brightness(1.08) drop-shadow(0 0 12px #19ffd0); }
+  50% { filter: hue-rotate(145deg) saturate(2.2) brightness(1.28) drop-shadow(0 0 30px #19ffd0); }
+}
+
+.controller,
+.controller.ds4,
+.controller.custom,
+#controller {
+  animation: movasGlow 2.2s ease-in-out infinite !important;
+}
